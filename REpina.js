@@ -28,6 +28,9 @@ const daftarPengecualian = [
   "/2024/01/pokemon-unite-data-game-android.html",
   "/2024/01/garena-arena-of-valor-data-game.html",
   "/2024/01/counter-side-data-game-android.html",
+  "/2024/01/aether-gazer-data-game-android.html",
+
+  
   "/jangan-redirect.html"
 ];
 
