@@ -34,6 +34,7 @@ const daftarPengecualian = [
   "/2024/01/onmyoji-arena-3-data-game-android.html",
   "/2024/12/infinity-nikki-data-game-android.html",
   "/astra-knights-of-veda-data-game.html",
+  "/2024/01/snowbreak-containment-zone-data.html",
   
   "/jangan-redirect.html"
 ];
