@@ -37,6 +37,7 @@ const daftarPengecualian = [
   "/2024/01/snowbreak-containment-zone-data.html",
   "/2024/01/pubg-new-state-data-game-android.html",
   "/2024/01/reverse-1999-data-game-android.html",
+  "/2024/12/starseed-asnia-trigger-data-game.html",
   
   "/jangan-redirect.html"
 ];
