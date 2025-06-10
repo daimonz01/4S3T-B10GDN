@@ -42,6 +42,7 @@ const daftarPengecualian = [
   "/2024/07/zenless-zone-zero-data-game-android.html",  
   "/2024/01/pokemon-unite-data-game-android.html",  
   "/2024/07/download-zenless-zone-zero-pc.html",  
+  "/2024/01/devil-may-cry-peak-of-combat-data.html",  
   
   "/jangan-redirect.html"
 ];
