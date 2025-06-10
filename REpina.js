@@ -41,6 +41,7 @@ const daftarPengecualian = [
   "/2025/02/astra-knights-of-veda-data-game.html",  
   "/2024/07/zenless-zone-zero-data-game-android.html",  
   "/2024/01/pokemon-unite-data-game-android.html",  
+  "/2024/07/download-zenless-zone-zero-pc.html",  
   
   "/jangan-redirect.html"
 ];
