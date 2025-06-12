@@ -9,7 +9,17 @@
     'https://trakteer.id/',
     'https://sociabuzz.com/',
     'https://saweria.co/',
-    'https://clck.adskeeper.com/'
+    'https://clck.adskeeper.com/',
+
+    
+    'https://www.facebook.com/',
+    'https://www.instagram.com/',
+    'https://twitter.com/',
+    'https://www.threads.net/',
+    'https://www.whatsapp.com/',
+    'https://bsky.app/',
+    'https://pinterest.com/',
+    'https://www.kuysocial.com/'    
   ];
 
   const popupUrl = 'https://quintessentialreport.com/bj3/V/0eP.3hp/vDb/m_V/JcZkD/0_2/MCTgcww-O/TqE/0/LVTtYRxXN/zBAy5YM/TdUS';
