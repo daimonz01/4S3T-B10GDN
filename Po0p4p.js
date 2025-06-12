@@ -6,6 +6,9 @@
     'https://adclick.g.doubleclick.net/',
     'https://googleads.g.doubleclick.net/',
     'https://cat.sg1.as.criteo.com/',
+    'https://trakteer.id/',
+    'https://sociabuzz.com/',
+    'https://saweria.co/',
     'https://clck.adskeeper.com/'
   ];
 
