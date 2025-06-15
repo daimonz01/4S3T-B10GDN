@@ -44,7 +44,7 @@ const daftarPengecualian = [
   "/2024/01/devil-may-cry-peak-of-combat-data.html",  
   "/2024/01/download-goddess-of-victory-nikke-pc.html",  
   "/2024/05/wuthering-waves-data-game-android.html",  
-
+  "/2024/06/download-wuthering-waves-pc.html",  
   
   "/jangan-redirect.html"
 ];
