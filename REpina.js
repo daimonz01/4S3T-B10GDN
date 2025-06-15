@@ -45,6 +45,7 @@ const daftarPengecualian = [
   "/2024/01/download-goddess-of-victory-nikke-pc.html",  
   "/2024/05/wuthering-waves-data-game-android.html",  
   "/2024/06/download-wuthering-waves-pc.html",  
+  "/2024/01/carx-street-data-game-android.html",  
   
   "/jangan-redirect.html"
 ];
