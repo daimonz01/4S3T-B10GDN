@@ -49,6 +49,7 @@ const daftarPengecualian = [
   "/2024/12/infinity-nikki-data-game-android.html",
   "/2025/06/project-net-data-game-android.html",
   "/2024/01/download-genshin-impact-pc.html",
+  "/2024/01/epic-seven-data-game-android.html",
   
   "/jangan-redirect.html"
 ];
