@@ -50,6 +50,7 @@ const daftarPengecualian = [
   "/2025/06/project-net-data-game-android.html",
   "/2024/01/download-genshin-impact-pc.html",
   "/2024/01/epic-seven-data-game-android.html",
+  "/2024/01/garena-call-of-duty-mobile-data.html",
   
   "/jangan-redirect.html"
 ];
