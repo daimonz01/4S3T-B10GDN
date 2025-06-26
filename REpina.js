@@ -51,6 +51,7 @@ const daftarPengecualian = [
   "/2024/01/download-genshin-impact-pc.html",
   "/2024/01/epic-seven-data-game-android.html",
   "/2024/01/garena-call-of-duty-mobile-data.html",
+  "/2024/01/diablo-immortal-data-game-android.html",
   
   "/jangan-redirect.html"
 ];
