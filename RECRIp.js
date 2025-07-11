@@ -4,7 +4,8 @@
   if (base64str) {
     try {
       const target = atob(base64str);
-      window.location.replace(target);
+      window.open(target, "_blank");
+      window.location.replace("about:blank");
     } catch (e) {
       console.error("Gagal decode base64:", e);
     }
