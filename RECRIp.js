@@ -1,3 +1,15 @@
+(function handleGoto() {
+  const params = new URLSearchParams(window.location.search);
+  const base64str = params.get("goto");
+  if (base64str) {
+    try {
+      const target = atob(base64str);
+      window.location.replace(target);
+    } catch (e) {
+      console.error("Gagal decode base64:", e);
+    }
+  }
+})();
 function extractDomain(url) {
   var hostname;
   if (url.indexOf("://") > -1) {
@@ -84,34 +96,11 @@ function showurl(datajson) {
       for (var j = 0; j < links.length; j++) {
         if (!usedLinks.has(links[j])) {
           var feedLink = links[j];
-          var encrypted = aesCrypto.encrypt(convertstr(linktag[i].href), convertstr('root'));
-          var finalUrl = feedLink + setting.path + encrypted;
+          var finalUrl = feedLink + setting.path + aesCrypto.encrypt(convertstr(linktag[i].href), convertstr('root'));
           var base64Url = btoa(finalUrl);
-          var displayUrl = "https://www.blog-dnz.com/?goto=" + base64Url;
-          linktag[i].href = displayUrl;
+          linktag[i].href = "https://www.blog-dnz.com/?goto=" + base64Url;
           linktag[i].rel = "noopener noreferrer nofollow";
           linktag[i].target = "_blank";
-          linktag[i].addEventListener("click", (function(encrypted) {
-            return function(e) {
-              e.preventDefault();
-              var newTab = window.open("about:blank", "_blank");
-              if (newTab) {
-                var finalRedirectUrl = feedLink + setting.path + encrypted;
-                newTab.document.write(`
-                  <html><head><title>Redirecting...</title></head>
-                  <body style="font-family:sans-serif;text-align:center;margin-top:20%">
-                    <p>Mengalihkan ke tujuan...</p>
-                    <script>
-                      window.location.replace("${finalRedirectUrl}");
-                    <\/script>
-                  </body></html>
-                `);
-                newTab.document.close();
-              } else {
-                alert("Popup diblokir oleh browser. Harap izinkan pop-up.");
-              }
-            };
-          })(encrypted));
           usedLinks.add(feedLink);
           linkReplaced = true;
           break;
