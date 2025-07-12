@@ -1,20 +1,15 @@
-// Fungsi untuk menangani redirect saat membuka link
 (function handleGoto() {
   const params = new URLSearchParams(window.location.search);
   const base64str = params.get("goto");
   if (base64str) {
     try {
-      const target = atob(base64str); // Decode URL dari Base64
-      // Buka URL tujuan di tab baru
-      window.open(target, '_blank');
-      // Tetap di halaman kosong (blank) saat ini
+      const target = atob(base64str);
+      window.location.replace(target);
     } catch (e) {
       console.error("Gagal decode base64:", e);
     }
   }
 })();
-
-// Fungsi untuk mengambil domain dari URL
 function extractDomain(url) {
   var hostname;
   if (url.indexOf("://") > -1) {
@@ -24,18 +19,12 @@ function extractDomain(url) {
   }
   return hostname.split(':')[0].split('?')[0];
 }
-
-// Fungsi untuk mendapatkan daftar URL yang dikecualikan
 function exception() {
   return setting.exceptionurl.split(",");
 }
-
-// Fungsi untuk membersihkan string
 function convertstr(str) {
   return str.replace(/^\s+/, '').replace(/\s+$/, '');
 }
-
-// Objek untuk enkripsi AES
 var aesCrypto = {};
 !function(t) {
   "use strict";
@@ -69,15 +58,11 @@ var aesCrypto = {};
     }
   };
 }(aesCrypto);
-
-// Pengaturan URL yang dikecualikan
 if (!setting.exceptionurl) {
   setting.exceptionurl = window.location.href;
 } else {
   setting.exceptionurl += "," + window.location.href;
 }
-
-// Fungsi untuk mengubah semua link eksternal
 function showurl(datajson) {
   var check = false;
   var no = 0;
@@ -86,8 +71,6 @@ function showurl(datajson) {
   var links = [];
   var usedLinks = new Set();
   var semuaartikel = datajson.feed.openSearch$totalResults.$t;
-  
-  // Mengumpulkan semua URL artikel
   for (var i = 0; i < semuaartikel; i++) {
     var urlartikel;
     for (var s = 0; s < datajson.feed.entry[i].link.length; s++) {
@@ -98,35 +81,23 @@ function showurl(datajson) {
     }
     links.push(urlartikel);
   }
-  
-  // Acak urutan link
   links = links.sort(() => Math.random() - 0.5);
-  
-  // Proses semua link di halaman
   for (var i = 0; i < linktag.length; i++) {
     check = false;
     no = 0;
-    
-    // Cek apakah link termasuk yang dikecualikan
     while (check == false && no < exceptionlength) {
       if (extractDomain(linktag[i].href).match(extractDomain(exception()[no]))) {
         check = true;
       }
       no++;
     }
-    
-    // Jika bukan link yang dikecualikan
     if (check == false) {
       var linkReplaced = false;
       for (var j = 0; j < links.length; j++) {
         if (!usedLinks.has(links[j])) {
           var feedLink = links[j];
-          // Enkripsi URL asli
-          var encryptedUrl = aesCrypto.encrypt(convertstr(linktag[i].href), convertstr('root'));
-          var finalUrl = feedLink + setting.path + encryptedUrl;
-          // Encode ke Base64
+          var finalUrl = feedLink + setting.path + aesCrypto.encrypt(convertstr(linktag[i].href), convertstr('root'));
           var base64Url = btoa(finalUrl);
-          // Set atribut link
           linktag[i].href = "https://www.blog-dnz.com/?goto=" + base64Url;
           linktag[i].rel = "noopener noreferrer nofollow";
           linktag[i].target = "_blank";
