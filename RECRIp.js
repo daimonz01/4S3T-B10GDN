@@ -127,7 +127,7 @@ function showurl(datajson) {
           // Encode ke Base64
           var base64Url = btoa(finalUrl);
           // Set atribut link
-          linktag[i].href = "https://www.websaya/?goto=" + base64Url;
+          linktag[i].href = "https://www.blog-dnz.com/?goto=" + base64Url;
           linktag[i].rel = "noopener noreferrer nofollow";
           linktag[i].target = "_blank";
           usedLinks.add(feedLink);
