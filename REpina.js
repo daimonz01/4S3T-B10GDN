@@ -58,6 +58,7 @@ const daftarPengecualian = [
   "/2024/01/download-valorant-pc.html",
   "/2024/01/arena-of-valor-data-game-android.html",
   "/2024/01/the-eminence-in-shadow-rpg-data.html",
+  "/2024/01/download-lost-saga-origin.html",
   
   "/jangan-redirect.html"
 ];
