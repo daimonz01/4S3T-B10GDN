@@ -60,6 +60,7 @@ const daftarPengecualian = [
   "/2024/01/the-eminence-in-shadow-rpg-data.html",
   "/2024/01/download-lost-saga-origin.html",
   "/2024/01/download-point-blank-beyond-limits.html",
+  "/2024/01/download-point-blank-sea.html",
   
   "/jangan-redirect.html"
 ];
