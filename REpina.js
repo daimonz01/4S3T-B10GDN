@@ -61,6 +61,7 @@ const daftarPengecualian = [
   "/2024/01/download-lost-saga-origin.html",
   "/2024/01/download-point-blank-beyond-limits.html",
   "/2024/01/download-point-blank-sea.html",
+  "/2024/01/league-of-legends-wild-rift.html",
   
   "/jangan-redirect.html"
 ];
