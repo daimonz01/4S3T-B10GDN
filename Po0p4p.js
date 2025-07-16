@@ -18,6 +18,7 @@
     'https://bsky.app/',
     'https://pinterest.com/',
     'https://www.kuysocial.com/'
+    '#showPopup'
   ];
 
   const popupUrl = 'https://quintessentialreport.com/bj3/V/0eP.3hp/vDb/m_V/JcZkD/0_2/MCTgcww-O/TqE/0/LVTtYRxXN/zBAy5YM/TdUS';
