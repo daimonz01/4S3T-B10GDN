@@ -17,7 +17,7 @@
     'https://www.whatsapp.com/',
     'https://bsky.app/',
     'https://pinterest.com/',
-    'https://www.kuysocial.com/'
+    'https://www.kuysocial.com/',
     '#showPopup'
   ];
 
