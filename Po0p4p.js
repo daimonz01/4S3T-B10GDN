@@ -21,7 +21,7 @@
     '#showPopup'
   ];
 
-  const popupUrl = 'https://quintessentialreport.com/bj3/V/0eP.3hp/vDb/m_V/JcZkD/0_2/MCTgcww-O/TqE/0/LVTtYRxXN/zBAy5YM/TdUS';
+  const popupUrl = 'https://tastyannual.com/bA3.Vp0DPg3/pavLbhmnVBJ/ZKDu0/2UMETlcTwFO/T_EL0cLpTZY/x/NYz/AP5bMdTcUt';
   const delay = 8000;
 
   function hasAncestorWithClass(el, className) {
