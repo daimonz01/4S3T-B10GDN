@@ -18,12 +18,10 @@
     'https://bsky.app/',
     'https://pinterest.com/',
     'https://www.kuysocial.com/',
-    '#showPopup',
-    'page0',
-    'page1',
-    'page2',
-    'page3'
+    '#showPopup'
   ];
+
+  const excludedButtons = ['page0', 'page1', 'page2', 'page3'];
 
   const popupUrl = 'https://tastyannual.com/bA3.Vp0DPg3/pavLbhmnVBJ/ZKDu0/2UMETlcTwFO/T_EL0cLpTZY/x/NYz/AP5bMdTcUt';
   const delay = 8000;
@@ -48,6 +46,14 @@
     return false;
   }
 
+  function isExcludedButton(el) {
+    const btn = el.closest('button');
+    if (btn && btn.dataset.goto) {
+      return excludedButtons.includes(btn.dataset.goto);
+    }
+    return false;
+  }
+
   function openPopupOnce() {
     if (Math.random() < 0.5) {
       window.open(popupUrl, '_blank');
@@ -68,23 +74,19 @@
   }, delay);
 
   document.addEventListener('click', function(evt) {
+    if (isExcludedButton(evt.target)) return;
+
     const excludedClasses = ['AdsbyGoolge'];
     for (let cls of excludedClasses) {
-      if (hasAncestorWithClass(evt.target, cls)) {
-        return;
-      }
+      if (hasAncestorWithClass(evt.target, cls)) return;
     }
 
-    if (hasAncestorWithAttribute(evt.target, 'data-type', '_mgwidget')) {
-      return;
-    }
-    
+    if (hasAncestorWithAttribute(evt.target, 'data-type', '_mgwidget')) return;
+
     const anchor = evt.target.closest('a');
     if (anchor && anchor.href) {
       for (let url of excludedUrls) {
-        if (anchor.href.includes(url)) {
-          return;
-        }
+        if (anchor.href.includes(url)) return;
       }
     }
 
