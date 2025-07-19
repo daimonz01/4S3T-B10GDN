@@ -18,7 +18,12 @@
     'https://bsky.app/',
     'https://pinterest.com/',
     'https://www.kuysocial.com/',
-    '#showPopup'
+    '#showPopup',
+    'page1',
+    'page2',
+    'page3',
+    'hidePopup()
+    
   ];
 
   const popupUrl = 'https://tastyannual.com/bA3.Vp0DPg3/pavLbhmnVBJ/ZKDu0/2UMETlcTwFO/T_EL0cLpTZY/x/NYz/AP5bMdTcUt';
