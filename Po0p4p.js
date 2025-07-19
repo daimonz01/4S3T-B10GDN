@@ -19,10 +19,10 @@
     'https://pinterest.com/',
     'https://www.kuysocial.com/',
     '#showPopup',
+    'page0',
     'page1',
     'page2',
     'page3'
-    
   ];
 
   const popupUrl = 'https://tastyannual.com/bA3.Vp0DPg3/pavLbhmnVBJ/ZKDu0/2UMETlcTwFO/T_EL0cLpTZY/x/NYz/AP5bMdTcUt';
