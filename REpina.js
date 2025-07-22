@@ -62,6 +62,7 @@ const daftarPengecualian = [
   "/2024/01/download-point-blank-beyond-limits.html",
   "/2024/01/download-point-blank-sea.html",
   "/2024/01/league-of-legends-wild-rift.html",
+  "/2024/12/infinity-nikki-data-game-android.html",
   
   "/jangan-redirect.html"
 ];
