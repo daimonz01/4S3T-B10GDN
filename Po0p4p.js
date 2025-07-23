@@ -23,7 +23,7 @@
 
   const excludedButtons = ['page0', 'page1', 'page2', 'page3'];
 
-  const popupUrl = 'https://tastyannual.com/bA3.Vp0DPg3/pavLbhmnVBJ/ZKDu0/2UMETlcTwFO/T_EL0cLpTZY/x/NYz/AP5bMdTcUt';
+  const popupUrl = 'https://incompatible-decision.com/br3LVL0cP.3Ep/vabumxVfJ_ZgDU0r2KMsTocVwVOiTcEx0VLpTvY/xGNxzSA_5/MOTzUZ';
   const delay = 8000;
 
   function hasAncestorWithClass(el, className) {
