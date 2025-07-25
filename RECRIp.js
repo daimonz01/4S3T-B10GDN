@@ -98,7 +98,7 @@ function showurl(datajson) {
           var feedLink = links[j];
           var finalUrl = feedLink + setting.path + aesCrypto.encrypt(convertstr(linktag[i].href), convertstr('root'));
           var base64Url = btoa(finalUrl);
-          linktag[i].href = "search.blog-dnz.com/?goto=" + base64Url;
+          linktag[i].href = "https://search.blog-dnz.com/?goto=" + base64Url;
           linktag[i].rel = "noopener noreferrer nofollow";
           linktag[i].target = "_blank";
           usedLinks.add(feedLink);
