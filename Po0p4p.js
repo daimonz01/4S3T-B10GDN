@@ -21,7 +21,8 @@
     '#showPopup'
   ];
 
-  const popupUrl = 'https://helpfulopposite.com/b.3/V-0/PQ3Op/vKb/mhVZJBZADu0N2/METEccwtOKTqE/0DLzTWY/xdNNzgAF5OM/TQUg';
+  const excludedButtons = ['page1', 'page2', 'page3', 'page4'];
+  const popupUrl = 'https://altruistic-departure.com/bp3FV.0CPo3Op-vgb/mHV/JSZBDT0x2ZMTT_ctwROHTIEb0aLSTIYMxKNAzDAy5GMBTeU_';
   const delay = 8000;
 
   function hasAncestorWithClass(el, className) {
@@ -44,6 +45,19 @@
     return false;
   }
 
+  function hasExcludedButton(el) {
+    while (el) {
+      if (el.hasAttribute && el.hasAttribute('data-goto')) {
+        const val = el.getAttribute('data-goto');
+        if (excludedButtons.includes(val)) {
+          return true;
+        }
+      }
+      el = el.parentElement;
+    }
+    return false;
+  }
+
   function openPopupOnce() {
     if (Math.random() < 0.5) {
       window.open(popupUrl, '_blank');
@@ -52,8 +66,8 @@
       const height = 200;
       const left = (screen.width - width) / 1;
       const top = (screen.height - height) / 1;
-      const features = width=${width},height=${height},left=${left},top=${top}, +
-        toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes;
+      const features = `width=${width},height=${height},left=${left},top=${top},` +
+        `toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes`;
       window.open(popupUrl, '_blank', features);
     }
   }
@@ -64,7 +78,9 @@
   }, delay);
 
   document.addEventListener('click', function(evt) {
-    const excludedClasses = ['AdsbyGoolge'];
+    if (!evt.target || !(evt.target instanceof Element)) return;
+
+    const excludedClasses = ['AdsbyGoogle'];
     for (let cls of excludedClasses) {
       if (hasAncestorWithClass(evt.target, cls)) {
         return;
@@ -74,7 +90,11 @@
     if (hasAncestorWithAttribute(evt.target, 'data-type', '_mgwidget')) {
       return;
     }
-    
+
+    if (hasExcludedButton(evt.target)) {
+      return;
+    }
+
     const anchor = evt.target.closest('a');
     if (anchor && anchor.href) {
       for (let url of excludedUrls) {
