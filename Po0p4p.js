@@ -23,7 +23,7 @@
 
   const excludedButtons = ['page0', 'page1', 'page2', 'page3', 'page4'];
   const popupUrl = 'https://altruistic-departure.com/bp3FV.0CPo3Op-vgb/mHV/JSZBDT0x2ZMTT_ctwROHTIEb0aLSTIYMxKNAzDAy5GMBTeU_';
-  const delay = 12000;
+  const delay = 8000;
 
   function hasAncestorWithClass(el, className) {
     while (el) {
@@ -113,3 +113,4 @@
     }, delay);
   }, false);
 })();
+
