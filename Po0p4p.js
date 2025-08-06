@@ -18,6 +18,8 @@
     'https://bsky.app/',
     'https://pinterest.com/',
     'https://www.kuysocial.com/',
+    'https://jup.ag/',
+    'https://euphoric-square.com/',
     '#showPopup'
   ];
 
@@ -113,5 +115,6 @@
     }, delay);
   }, false);
 })();
+
 
 
