@@ -23,7 +23,7 @@
     '#showPopup'
   ];
 
-  const excludedButtons = ['page0', 'page1', 'page2', 'page3', 'page4'];
+  const excludedButtons = ['page0', 'page1', 'page2', 'page3', 'page4', 'hidePopup()'];
   const popupUrl = 'https://altruistic-departure.com/b/3-V.0IP/3vp/vZbEm/VVJTZuDG0l2nM/j/Mt1TMbD/EZ3eLATBY/yoMXz/UTwtMMTZgb';
   const delay = 8000;
 
@@ -115,4 +115,5 @@
     }, delay);
   }, false);
 })();
+
 
