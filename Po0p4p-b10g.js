@@ -24,8 +24,8 @@
   ];
 
   const excludedButtons = ['page0', 'page1', 'page2', 'page3', 'page4', 'hidePopup()'];
-  const popupUrl = 'https://altruistic-departure.com/b/3-V.0IP/3vp/vZbEm/VVJTZuDG0l2nM/j/Mt1TMbD/EZ3eLATBY/yoMXz/UTwtMMTZgb';
-  const delay = 8000;
+  const popupUrl = 'https://strictease.com/bD3iVk0dP.3up/vsbPmTV/JuZhDT0s2fMaTncmw/OnTJEZ0zLQTDY/xXNRzDAI5yMSTIUr';
+  const delay = 12000;
 
   function hasAncestorWithClass(el, className) {
     while (el) {
@@ -115,5 +115,6 @@
     }, delay);
   }, false);
 })();
+
 
 
