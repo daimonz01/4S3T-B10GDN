@@ -24,7 +24,7 @@
   ];
 
   const excludedButtons = ['page0', 'page1', 'page2', 'page3', 'page4'];
-  const popupUrl = 'https://strictease.com/b.3KVj0KPa3mpEvkbxmSVWJEZDD/0j2/M-TUcZwnOXTLET0pLFTpYsxqNfz/A/5/MCTNUz';
+  const popupUrl = 'https://strictease.com/bU3kV.0mP/3tp/vIbGmiVdJhZmDd0J2SMBTbcgwPOpTmEp0QLAT/Y_x/N/zWAu5iMeT/UL';
   const delay = 8000;
 
   function hasAncestorWithClass(el, className) {
@@ -115,6 +115,7 @@
     }, delay);
   }, false);
 })();
+
 
 
 
