@@ -20,6 +20,8 @@
     'https://www.kuysocial.com/',
     'https://jup.ag/',
     'https://euphoric-square.com/',
+    'https://shopee.co.id/',
+    's.shopee.co.id',
     '#showPopup'
   ];
 
@@ -115,6 +117,7 @@
     }, delay);
   }, false);
 })();
+
 
 
 
