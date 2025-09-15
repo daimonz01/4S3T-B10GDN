@@ -21,6 +21,7 @@
     'https://jup.ag/',
     'https://euphoric-square.com/',
     'https://shopee.co.id/',
+    'buylink.id',
     's.shopee.co.id',
     '#showPopup'
   ];
@@ -117,6 +118,7 @@
     }, delay);
   }, false);
 })();
+
 
 
 
