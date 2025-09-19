@@ -27,7 +27,7 @@
   ];
 
   const excludedButtons = ['page0', 'page1', 'page2', 'page3', 'page4'];
-  const popupUrl = 'https://strictease.com/bQ3FVi0/P.3WptvNbPmWV/JYZmDO0a2YMuTcc/woOdTLEr0DL-T/Y/xaNZzOAW5QMGTKUh';
+  const popupUrl = 'https://dramatic-food.com/ArQbMi';
   const delay = 12000;
 
   function hasAncestorWithClass(el, className) {
@@ -118,6 +118,7 @@
     }, delay);
   }, false);
 })();
+
 
 
 
