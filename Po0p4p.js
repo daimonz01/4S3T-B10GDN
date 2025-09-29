@@ -28,7 +28,7 @@
 
   const excludedButtons = ['page0', 'page1', 'page2', 'page3', 'page4'];
   const popupUrl = 'https://strictease.com/bP3pV/0CP.3Jp/v/bFmFVXJ/ZTDx0j2vMDT-c/w_OuTBEl0dLpT_YPxtN/zYAB5EMwTCUv';
-  const delay = 12000;
+  const delay = 50000;
 
   function hasAncestorWithClass(el, className) {
     while (el) {
@@ -118,6 +118,7 @@
     }, delay);
   }, false);
 })();
+
 
 
 
