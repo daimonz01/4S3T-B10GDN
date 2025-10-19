@@ -27,7 +27,7 @@
   ];
 
   const excludedButtons = ['page0', 'page1', 'page2', 'page3', 'page4'];
-  const popupUrl = 'https://strictease.com/bP3pV/0CP.3Jp/v/bFmFVXJ/ZTDx0j2vMDT-c/w_OuTBEl0dLpT_YPxtN/zYAB5EMwTCUv';
+  const popupUrl = 'https://overdue-truth.com/bE3QV/0.PK3gp/vYbcmLV/JjZxDs0r2aMdTtcxwAOHTZEz0FLATXY-xENNzSAU5cMKTuUP';
   const delay = 60000;
 
   function hasAncestorWithClass(el, className) {
@@ -118,6 +118,7 @@
     }, delay);
   }, false);
 })();
+
 
 
 
