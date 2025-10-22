@@ -28,7 +28,7 @@
 
   const excludedButtons = ['page0', 'page1', 'page2', 'page3', 'page4'];
   const popupUrl = 'https://overdue-truth.com/bE3QV/0.PK3gp/vYbcmLV/JjZxDs0r2aMdTtcxwAOHTZEz0FLATXY-xENNzSAU5cMKTuUP';
-  const delay = 60000;
+  const delay = 8000;
 
   function hasAncestorWithClass(el, className) {
     while (el) {
@@ -118,6 +118,7 @@
     }, delay);
   }, false);
 })();
+
 
 
 
