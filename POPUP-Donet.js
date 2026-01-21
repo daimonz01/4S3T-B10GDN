@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
     buttons.forEach(function(button) {
         button.addEventListener('click', function() {
             var url = this.getAttribute('data-url');
-            var width = 520;
-            var height = 768;
+            var width = 600;
+            var height = 815;
             var left = (screen.width - width) / 2;
             var top = (screen.height - height) / 2;
             var options = "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top;
@@ -36,4 +36,5 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
+
 });
