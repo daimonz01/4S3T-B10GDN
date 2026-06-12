@@ -78,16 +78,20 @@ function showurl(datajson) {
       no++;
     }
     if (check == false) {
-      var encrypted = aesCrypto.encrypt(
+      var encrypted1 = aesCrypto.encrypt(
         convertstr(linktag[i].href),
         convertstr('root')
       );
-      var finalUrl = "https://aman-dn.blogspot.com/#?o=" + encrypted;
-      var base64Url = btoa(finalUrl);
+      var firstURL = "https://aman-dn.blogspot.com/#?o=" + encrypted1;
+      var encrypted2 = aesCrypto.encrypt(
+        convertstr(firstURL),
+        convertstr('root')
+      );
+      var finalURL = "https://www.article-dnz.xyz/#?r=" + encrypted2;
+      var base64Url = btoa(finalURL);
       linktag[i].href = "https://search.blog-dnz.com/?goto=" + base64Url;
       linktag[i].rel = "noopener noreferrer nofollow";
       linktag[i].target = "_blank";
-
     }
   }
 }
