@@ -1,13 +1,26 @@
 (function handleGoto() {
   const params = new URLSearchParams(window.location.search);
   const base64str = params.get("goto");
-  if (base64str) {
-    try {
-      const target = atob(base64str);
-      window.location.replace(target);
-    } catch (e) {
-      console.error("Gagal decode base64:", e);
+  if (!base64str) return;
+  try {
+    const level1 = atob(base64str);
+    const encrypted2 = level1.split("#?r=")[1];
+    if (!encrypted2) return;
+    const level2 = aesCrypto.decrypt(
+      encrypted2,
+      convertstr('root')
+    );
+    const encrypted1 = level2.split("#?o=")[1];
+    if (!encrypted1) return;
+    const finalTarget = aesCrypto.decrypt(
+      encrypted1,
+      convertstr('root')
+    );
+    if (finalTarget) {
+      window.location.replace(finalTarget);
     }
+  } catch(e) {
+    console.error("Gagal decrypt:", e);
   }
 })();
 function extractDomain(url) {
