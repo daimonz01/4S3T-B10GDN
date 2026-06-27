@@ -100,7 +100,7 @@ function showurl(datajson) {
         convertstr(firstURL),
         convertstr('root')
       );
-      var finalURL = "https://www.article-dnz.xyz/#?r=" + encrypted2;
+      var finalURL = "https://article.blog-dnz.com/#?r=" + encrypted2;
       var base64Url = btoa(finalURL);
       linktag[i].href = "https://search.blog-dnz.com/?goto=" + base64Url;
       linktag[i].rel = "noopener noreferrer nofollow";
