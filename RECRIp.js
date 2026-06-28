@@ -3,13 +3,29 @@
   const base64str = params.get("goto");
   if (base64str) {
     try {
-      const target = atob(base64str);
+      const xorText = decodeURIComponent(
+        escape(atob(base64str))
+      );
+      const target = xorDecode(xorText, "mySecretKey");
       window.location.replace(target);
     } catch (e) {
-      console.error("Gagal decode base64:", e);
+      console.error("Gagal decode XOR/Base64:", e);
     }
   }
 })();
+function xorEncode(text, key) {
+  let result = "";
+  for (let i = 0; i < text.length; i++) {
+    result += String.fromCharCode(
+      text.charCodeAt(i) ^ key.charCodeAt(i % key.length)
+    );
+  }
+  return result;
+}
+function xorDecode(text, key) {
+  return xorEncode(text, key);
+}
+const XOR_KEY = "mySecretKey";
 function extractDomain(url) {
   var hostname;
   if (url.indexOf("://") > -1) {
@@ -97,8 +113,9 @@ function showurl(datajson) {
         if (!usedLinks.has(links[j])) {
           var feedLink = links[j];
           var finalUrl = feedLink + setting.path + aesCrypto.encrypt(convertstr(linktag[i].href), convertstr('root'));
-          var base64Url = btoa(finalUrl);
-          linktag[i].href = "https://search.blog-dnz.com/?goto=" + base64Url;
+          var xorUrl = xorEncode(finalUrl, XOR_KEY);
+          var base64Url = btoa(unescape(encodeURIComponent(xorUrl)));
+          linktag[i].href = "https://search.blog-dnz.com/?goto=" + base64Url;;
           linktag[i].rel = "noopener noreferrer nofollow";
           linktag[i].target = "_blank";
           usedLinks.add(feedLink);
