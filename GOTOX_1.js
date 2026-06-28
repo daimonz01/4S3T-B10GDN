@@ -46,32 +46,27 @@
         });
     }
     function decodeLink() {
-        const current =
-            window.location.href;
-        if (
-            current.includes("/gotox=")
-        ) {
-            const key =
-                current.split("/gotox=")[1];
-            if (key) {
-                const url =
-                    xorDecode(key);
-                if (url) {
-                    if (
-                        !url.startsWith("http://") &&
-                        !url.startsWith("https://")
-                    ) {
-                        window.location.href =
-                            "https://" + url;
-                    }
-                    else {
-                        window.location.href =
-                            url;
-                    }
+        const path = window.location.pathname;
+    if (path.startsWith("/gotox=")) {
+        const key = path
+            .substring(7);
+        if (key) {
+            const url = xorDecode(key);
+            if (url) {
+                if (
+                    !url.startsWith("http://") &&
+                    !url.startsWith("https://")
+                ) {
+                    window.location.href =
+                        "https://" + url;
+                }
+                else {
+                    window.location.href = url;
                 }
             }
         }
     }
+}
     if (
         document.readyState === "complete"
     ) {
