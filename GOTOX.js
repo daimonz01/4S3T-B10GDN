@@ -5,7 +5,7 @@ function encodeLinks() {
       : new URL(a.href).searchParams.get('url');
     if (rawUrl) {
       const encoded = btoa(rawUrl);
-      a.href = '/gotox?url=' + encodeURIComponent(encoded);
+      a.href = 'https://search.blog-dnz.com/gotox?url=' + encodeURIComponent(encoded);
     }
   });
 }
