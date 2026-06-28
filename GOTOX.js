@@ -5,7 +5,7 @@ function encodeLinks() {
       : new URL(a.href).searchParams.get('url');
     if (rawUrl) {
       const encoded = btoa(rawUrl);
-      a.href = 'https://search.blog-dnz.com/gotox?url=' + encodeURIComponent(encoded);
+      a.href = '/gotox?url=' + encodeURIComponent(encoded);
     }
   });
 }
@@ -16,7 +16,7 @@ document.addEventListener('click', e => {
   const urlParam = new URL(a.href).searchParams.get('url');
   if (urlParam) location.href = atob(urlParam);
 });
-if (location.pathname === '/gotox' && location.search.includes('url=')) {
+if (location.pathname === 'https://search.blog-dnz.com/gotox' && location.search.includes('url=')) {
   const params = new URLSearchParams(location.search);
   const encoded = params.get('url');
   if (encoded) {
