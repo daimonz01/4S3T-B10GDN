@@ -15,26 +15,24 @@
         });
     }
     document.addEventListener("click", function (e) {
-        const a = e.target.closest('a[href^="https://search.blog-dnz.com/gotox="]');
+        const a = e.target.closest(
+            'a[href^="https://search.blog-dnz.com/gotox="]'
+        );
         if (!a || a.target === "_blank") return;
         e.preventDefault();
         const encoded = a.getAttribute("href")
             .split("/gotox=")[1];
         if (encoded) {
-            try {
-                window.location.href = atob(encoded);
-            } catch (err) {
-                console.error("Base64 decode error:", err);
-            }
+            location.href = atob(encoded);
         }
     });
     if (location.href.includes("/gotox=")) {
         const encoded = location.href.split("/gotox=")[1];
         if (encoded) {
             try {
-                window.location.href = atob(encoded);
-            } catch (err) {
-                console.error("Base64 decode error:", err);
+                location.href = atob(encoded);
+            } catch (e) {
+                console.error(e);
             }
         }
     }
