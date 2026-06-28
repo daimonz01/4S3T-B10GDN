@@ -3,9 +3,11 @@
   const base64str = params.get("goto");
   if (base64str) {
     try {
-      const xorText = decodeURIComponent(
-        escape(atob(base64str))
+      const bytes = Uint8Array.from(
+        atob(base64str),
+        c => c.charCodeAt(0)
       );
+      const xorText = new TextDecoder().decode(bytes);
       const target = xorDecode(xorText, "mySecretKey");
       window.location.replace(target);
     } catch (e) {
@@ -14,13 +16,13 @@
   }
 })();
 function xorEncode(text, key) {
-  let result = "";
+  let output = "";
   for (let i = 0; i < text.length; i++) {
-    result += String.fromCharCode(
+    output += String.fromCharCode(
       text.charCodeAt(i) ^ key.charCodeAt(i % key.length)
     );
   }
-  return result;
+  return output;
 }
 function xorDecode(text, key) {
   return xorEncode(text, key);
@@ -114,7 +116,7 @@ function showurl(datajson) {
           var feedLink = links[j];
           var finalUrl = feedLink + setting.path + aesCrypto.encrypt(convertstr(linktag[i].href), convertstr('root'));
           var xorUrl = xorEncode(finalUrl, XOR_KEY);
-          var base64Url = btoa(unescape(encodeURIComponent(xorUrl)));
+          var base64Url = btoa(String.fromCharCode(...new TextEncoder().encode(xorUrl)));
           linktag[i].href = "https://search.blog-dnz.com/?goto=" + base64Url;;
           linktag[i].rel = "noopener noreferrer nofollow";
           linktag[i].target = "_blank";
