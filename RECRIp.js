@@ -3,14 +3,10 @@
   const base64str = params.get("goto");
   if (base64str) {
     try {
-      const decoded = atob(base64str);
-      const target = aesCrypto.decrypt(decoded, convertstr('root'));
-
-      if (target) {
-        window.location.replace(target);
-      }
+      const target = atob(base64str);
+      window.location.replace(target);
     } catch (e) {
-      console.error("Gagal decode:", e);
+      console.error("Gagal decode base64:", e);
     }
   }
 })();
@@ -67,12 +63,28 @@ if (!setting.exceptionurl) {
 } else {
   setting.exceptionurl += "," + window.location.href;
 }
-function showurl() {
-  var linktag = document.getElementsByTagName("a");
+function showurl(datajson) {
+  var check = false;
+  var no = 0;
   var exceptionlength = exception().length;
+  var linktag = document.getElementsByTagName("a");
+  var links = [];
+  var usedLinks = new Set();
+  var semuaartikel = datajson.feed.openSearch$totalResults.$t;
+  for (var i = 0; i < semuaartikel; i++) {
+    var urlartikel;
+    for (var s = 0; s < datajson.feed.entry[i].link.length; s++) {
+      if (datajson.feed.entry[i].link[s].rel == 'alternate') {
+        urlartikel = datajson.feed.entry[i].link[s].href;
+        break;
+      }
+    }
+    links.push(urlartikel);
+  }
+  links = links.sort(() => Math.random() - 0.5);
   for (var i = 0; i < linktag.length; i++) {
-    var check = false;
-    var no = 0;
+    check = false;
+    no = 0;
     while (check == false && no < exceptionlength) {
       if (extractDomain(linktag[i].href).match(extractDomain(exception()[no]))) {
         check = true;
@@ -80,11 +92,23 @@ function showurl() {
       no++;
     }
     if (check == false) {
-      var encrypted = aesCrypto.encrypt(convertstr(linktag[i].href), convertstr('root'));
-      var base64Url = btoa(encrypted);
-      linktag[i].href = "https://search.blog-dnz.com/?goto=" + base64Url;
-      linktag[i].rel = "noopener noreferrer nofollow";
-      linktag[i].target = "_blank";
+      var linkReplaced = false;
+      for (var j = 0; j < links.length; j++) {
+        if (!usedLinks.has(links[j])) {
+          var feedLink = links[j];
+          var finalUrl = feedLink + setting.path + aesCrypto.encrypt(convertstr(linktag[i].href), convertstr('root'));
+          var base64Url = btoa(finalUrl);
+          linktag[i].href = "https://search.blog-dnz.com/?goto=" + base64Url;
+          linktag[i].rel = "noopener noreferrer nofollow";
+          linktag[i].target = "_blank";
+          usedLinks.add(feedLink);
+          linkReplaced = true;
+          break;
+        }
+      }
+      if (!linkReplaced) {
+        console.warn("Tidak ada feed post tersedia untuk mengganti link: ", linktag[i].href);
+      }
     }
   }
 }
