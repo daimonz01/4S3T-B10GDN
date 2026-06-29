@@ -1,33 +1,47 @@
+const XOR_KEY = "mySecretKey";
+function xorEncode(text, key) {
+  const data = new TextEncoder().encode(text);
+  const keyBytes = new TextEncoder().encode(key);
+  let result = new Uint8Array(data.length);
+  for (let i = 0; i < data.length; i++) {
+    result[i] = data[i] ^ keyBytes[i % keyBytes.length];
+  }
+  return result;
+}
+function encodeGoto(text) {
+  const xorBytes = xorEncode(text, XOR_KEY);
+  let binary = "";
+  xorBytes.forEach(function(byte){
+    binary += String.fromCharCode(byte);
+  });
+  return btoa(binary);
+}
+function decodeGoto(base64) {
+  const bytes = Uint8Array.from(
+    atob(base64),
+    c => c.charCodeAt(0)
+  );
+  const keyBytes = new TextEncoder().encode(XOR_KEY);
+  for (let i = 0; i < bytes.length; i++) {
+    bytes[i] ^= keyBytes[i % keyBytes.length];
+  }
+  return new TextDecoder().decode(bytes);
+}
 (function handleGoto() {
   const params = new URLSearchParams(window.location.search);
   const base64str = params.get("goto");
   if (base64str) {
     try {
-      const bytes = Uint8Array.from(
-        atob(base64str),
-        c => c.charCodeAt(0)
-      );
-      const xorText = new TextDecoder().decode(bytes);
-      const target = xorDecode(xorText, "mySecretKey");
+      const target = decodeGoto(base64str);
       window.location.replace(target);
     } catch (e) {
-      console.error("Gagal decode XOR/Base64:", e);
+      console.error(
+        "Gagal decode XOR/Base64:",
+        e
+      );
     }
   }
 })();
-function xorEncode(text, key) {
-  let output = "";
-  for (let i = 0; i < text.length; i++) {
-    output += String.fromCharCode(
-      text.charCodeAt(i) ^ key.charCodeAt(i % key.length)
-    );
-  }
-  return output;
-}
-function xorDecode(text, key) {
-  return xorEncode(text, key);
-}
-const XOR_KEY = "mySecretKey";
 function extractDomain(url) {
   var hostname;
   if (url.indexOf("://") > -1) {
@@ -114,10 +128,9 @@ function showurl(datajson) {
       for (var j = 0; j < links.length; j++) {
         if (!usedLinks.has(links[j])) {
           var feedLink = links[j];
-          var finalUrl = feedLink + setting.path + aesCrypto.encrypt(convertstr(linktag[i].href), convertstr('root'));
-          var xorUrl = xorEncode(finalUrl, XOR_KEY);
-          var base64Url = btoa(String.fromCharCode(...new TextEncoder().encode(xorUrl)));
-          linktag[i].href = "https://search.blog-dnz.com/?goto=" + base64Url;;
+          var finalUrl = feedLink + setting.path + aesCrypto.encrypt( convertstr(linktag[i].href), convertstr('root'));
+          var base64Url = encodeGoto(finalUrl);
+          linktag[i].href = "https://search.blog-dnz.com/?goto=" + base64Url;
           linktag[i].rel = "noopener noreferrer nofollow";
           linktag[i].target = "_blank";
           usedLinks.add(feedLink);
