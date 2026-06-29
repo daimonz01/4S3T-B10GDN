@@ -1,48 +1,16 @@
-const XOR_KEY = "mySecretKey";
-function xorEncode(text, key) {
-  const data = new TextEncoder().encode(text);
-  const keyBytes = new TextEncoder().encode(key);
-  let result = new Uint8Array(data.length);
-  for (let i = 0; i < data.length; i++) {
-    result[i] = data[i] ^ keyBytes[i % keyBytes.length];
-  }
-  return result;
-}
-function encodeGoto(text) {
-  const xorBytes = xorEncode(text, XOR_KEY);
-  let binary = "";
-  xorBytes.forEach(function(byte){
-    binary += String.fromCharCode(byte);
-  });
-  return btoa(binary);
-}
-function decodeGoto(base64) {
-  const bytes = Uint8Array.from(
-    atob(base64),
-    c => c.charCodeAt(0)
-  );
-  const keyBytes = new TextEncoder().encode(XOR_KEY);
-  for (let i = 0; i < bytes.length; i++) {
-    bytes[i] ^= keyBytes[i % keyBytes.length];
-  }
-  return new TextDecoder().decode(bytes);
-}
 (function handleGoto() {
   const params = new URLSearchParams(window.location.search);
   const base64str = params.get("goto");
   if (base64str) {
     try {
-      const encrypted = decodeGoto(base64str);
-      const target = aesCrypto.decrypt(
-        encrypted,
-        "root"
-      );
-      window.location.replace(target);
+      const decoded = atob(base64str);
+      const target = aesCrypto.decrypt(decoded, convertstr('root'));
+
+      if (target) {
+        window.location.replace(target);
+      }
     } catch (e) {
-      console.error(
-        "Gagal decode:",
-        e
-      );
+      console.error("Gagal decode:", e);
     }
   }
 })();
@@ -100,28 +68,20 @@ if (!setting.exceptionurl) {
   setting.exceptionurl += "," + window.location.href;
 }
 function showurl() {
-  var check = false;
-  var no = 0;
-  var exceptionlength = exception().length;
   var linktag = document.getElementsByTagName("a");
+  var exceptionlength = exception().length;
   for (var i = 0; i < linktag.length; i++) {
-    check = false;
-    no = 0;
+    var check = false;
+    var no = 0;
     while (check == false && no < exceptionlength) {
-      if (
-        extractDomain(linktag[i].href)
-        .match(extractDomain(exception()[no]))
-      ) {
+      if (extractDomain(linktag[i].href).match(extractDomain(exception()[no]))) {
         check = true;
       }
       no++;
     }
     if (check == false) {
-      var finalUrl = aesCrypto.encrypt(
-        convertstr(linktag[i].href),
-        convertstr('root')
-      );
-      var base64Url = encodeGoto(finalUrl);
+      var encrypted = aesCrypto.encrypt(convertstr(linktag[i].href), convertstr('root'));
+      var base64Url = btoa(encrypted);
       linktag[i].href = "https://search.blog-dnz.com/?goto=" + base64Url;
       linktag[i].rel = "noopener noreferrer nofollow";
       linktag[i].target = "_blank";
